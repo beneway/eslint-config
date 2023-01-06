@@ -2,7 +2,6 @@
   "name": "@benewy/eslint-config-monorepo",
   "version": "0.0.8",
   "private": true,
-  "description": "",
   "scripts": {
     "lint": "eslint .",
     "test": "pnpm -r run test",
