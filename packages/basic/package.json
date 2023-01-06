@@ -1,6 +1,6 @@
 {
   "name": "@benewy/eslint-config-basic",
-  "version": "0.0.1",
+  "version": "0.0.2-beta.0",
   "license": "MIT",
   "homepage": "https://github.com/benewy/eslint-config",
   "keywords": [
