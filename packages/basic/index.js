@@ -35,7 +35,7 @@ module.exports = {
   plugins: [
     'html',
     'unicorn',
-    'benewy',
+    '@benewy/eslint-plugin-benewy',
     'no-only-tests',
   ],
   settings: {
