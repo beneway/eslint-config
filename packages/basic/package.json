@@ -17,7 +17,7 @@
     "eslint": ">=7.4.0"
   },
   "dependencies": {
-    "@benewy/eslint-plugin-benewy": "workspace:*",
+    "eslint-plugin-benewy": "workspace:*",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-import": "^2.26.0",

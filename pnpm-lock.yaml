@@ -4,13 +4,17 @@ importers:
 
   .:
     specifiers:
+      '@benewy/eslint-config': '*'
       bumpp: ^8.2.1
       eslint: ^8.31.0
+      eslint-plugin-benewy: workspace:*
       rimraf: ^3.0.2
       typescript: ^4.9.4
     devDependencies:
+      '@benewy/eslint-config': link:packages/all
       bumpp: 8.2.1
       eslint: 8.31.0
+      eslint-plugin-benewy: link:packages/eslint-plugin-benewy
       rimraf: 3.0.2
       typescript: 4.9.4
 
@@ -51,8 +55,8 @@ importers:
 
   packages/basic:
     specifiers:
-      '@benewy/eslint-plugin-benewy': workspace:*
       eslint: ^8.31.0
+      eslint-plugin-benewy: workspace:*
       eslint-plugin-eslint-comments: ^3.2.0
       eslint-plugin-html: ^7.1.0
       eslint-plugin-import: ^2.26.0
@@ -66,7 +70,7 @@ importers:
       jsonc-eslint-parser: ^2.1.0
       yaml-eslint-parser: ^1.1.0
     dependencies:
-      '@benewy/eslint-plugin-benewy': link:../eslint-plugin-benewy
+      eslint-plugin-benewy: link:../eslint-plugin-benewy
       eslint-plugin-eslint-comments: 3.2.0_eslint@8.31.0
       eslint-plugin-html: 7.1.0
       eslint-plugin-import: 2.26.0_eslint@8.31.0

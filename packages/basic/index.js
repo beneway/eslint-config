@@ -35,7 +35,7 @@ module.exports = {
   plugins: [
     'html',
     'unicorn',
-    '@benewy/eslint-plugin-benewy',
+    'benewy',
     'no-only-tests',
   ],
   settings: {
@@ -341,8 +341,8 @@ module.exports = {
     'yml/no-empty-document': 'off',
 
     // benewy
-    // '@benewy/eslint-plugin-benewy/if-newline': 'error',
-    // '@benewy/eslint-plugin-benewy/import-dedupe': 'error',
-    // '@benewy/eslint-plugin-benewy/prefer-inline-type-import': 'error',
+    'benewy/if-newline': 'error',
+    'benewy/import-dedupe': 'error',
+    // 'benewy/prefer-inline-type-import': 'error',
   },
 }

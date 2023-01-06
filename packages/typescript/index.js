@@ -156,7 +156,7 @@ module.exports = {
     '@typescript-eslint/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
 
     // benewy
-    // '@benewy/eslint-config-benewy/generic-spacing': 'error',
+    'benewy/generic-spacing': 'error',
 
     // off
     '@typescript-eslint/consistent-indexed-object-style': 'off',
