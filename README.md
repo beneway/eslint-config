@@ -70,7 +70,7 @@ module.exports = {
 
 ## 扩展阅读
 
-了解更多上下文 - [为什么我不推荐不使用 Prettier](https://antfu.me/posts/why-not-prettier)。
+了解更多上下文 - [为什么我不推荐使用 Prettier](https://antfu.me/posts/why-not-prettier)。
 
 ## License
 
