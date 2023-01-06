@@ -35,7 +35,7 @@ module.exports = {
   plugins: [
     'html',
     'unicorn',
-    'antfu',
+    'benewy',
     'no-only-tests',
   ],
   settings: {
@@ -340,9 +340,9 @@ module.exports = {
     'yml/quotes': ['error', { prefer: 'single', avoidEscape: false }],
     'yml/no-empty-document': 'off',
 
-    // antfu
-    'antfu/if-newline': 'error',
-    'antfu/import-dedupe': 'error',
-    // 'antfu/prefer-inline-type-import': 'error',
+    // benewy
+    'benewy/if-newline': 'error',
+    'benewy/import-dedupe': 'error',
+    // 'benewy/prefer-inline-type-import': 'error',
   },
 }
