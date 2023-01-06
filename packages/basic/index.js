@@ -341,8 +341,8 @@ module.exports = {
     'yml/no-empty-document': 'off',
 
     // benewy
-    'benewy/if-newline': 'error',
-    'benewy/import-dedupe': 'error',
+    '@benewy/eslint-plugin-benewy/if-newline': 'error',
+    '@benewy/eslint-plugin-benewy/import-dedupe': 'error',
     // 'benewy/prefer-inline-type-import': 'error',
   },
 }
