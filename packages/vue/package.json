@@ -1,0 +1,25 @@
+{
+  "name": "@benewy/eslint-config-vue",
+  "version": "0.0.0",
+  "license": "MIT",
+  "homepage": "https://github.com/benewy/eslint-config",
+  "keywords": [
+    "eslint-config"
+  ],
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
+  "dependencies": {
+    "@benewy/eslint-config-basic": "workspace:*",
+    "@benewy/eslint-config-ts": "workspace:*",
+    "eslint-plugin-vue": "^9.8.0",
+    "local-pkg": "^0.4.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.31.0"
+  }
+}
