@@ -74,4 +74,4 @@ module.exports = {
 
 ## License
 
-[MIT](./LICENSE) License &copy; 2019-PRESENT [杭州融惠数据科技有限公司](https://github.com/benewy)
+[MIT](./LICENSE) License &copy; 2023-PRESENT [杭州融惠数据科技有限公司](https://github.com/benewy)
