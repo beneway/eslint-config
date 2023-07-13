@@ -2,7 +2,7 @@
   "name": "@beneway/eslint-config-react",
   "version": "0.1.0",
   "license": "MIT",
-  "homepage": "https://github.com/benewy/eslint-config",
+  "homepage": "https://github.com/beneway/eslint-config",
   "keywords": [
     "eslint-config"
   ],

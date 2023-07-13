@@ -6,7 +6,7 @@ const tsconfig = process.env.ESLINT_TSCONFIG || 'tsconfig.eslint.json'
 
 module.exports = {
   extends: [
-    '@benewy/eslint-config-basic',
+    '@beneway/eslint-config-basic',
     'plugin:import/typescript',
     'plugin:@typescript-eslint/recommended',
   ],
@@ -155,11 +155,11 @@ module.exports = {
     'lines-between-class-members': 'off',
     '@typescript-eslint/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
 
-    // benewy
-    'benewy/generic-spacing': 'error',
-    'benewy/no-cjs-exports': 'error',
-    'benewy/no-ts-export-equal': 'error',
-    'benewy/no-const-enum': 'error',
+    // beneway
+    'beneway/generic-spacing': 'error',
+    'beneway/no-cjs-exports': 'error',
+    'beneway/no-ts-export-equal': 'error',
+    'beneway/no-const-enum': 'error',
 
     // off
     '@typescript-eslint/consistent-indexed-object-style': 'off',

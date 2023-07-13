@@ -1,0 +1,62 @@
+{
+  "type": "module",
+  "version": "0.0.5",
+  "private": "true",
+  "description": "Starter template for Vue",
+  "author": "Elone Hoo <hi@elonehoo.me>",
+  "license": "MIT",
+  "vite": {
+    "server": {
+      "port": 3333
+    },
+    "test": {
+      "environment": "happy-dom",
+      "globals": true
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 8766",
+    "test": "vitest",
+    "test:ui": "vitest --ui --open false",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "release": "bumpp package.json --commit --push --tag"
+  },
+  "dependencies": {
+    "@unocss/reset": "^0.53.4",
+    "@vueuse/core": "^10.2.1",
+    "@vueuse/head": "^1.1.26",
+    "unocss": "^0.53.4",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.3"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.1.18",
+    "@types/node": "^20.4.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitest/coverage-c8": "^0.32.4",
+    "@vitest/ui": "^0.32.4",
+    "@vue/test-utils": "^2.4.0",
+    "bumpp": "^9.1.1",
+    "eslint": "^8.44.0",
+    "happy-dom": "^9.20.3",
+    "typescript": "^5.1.6",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-vue-components": "^0.25.1",
+    "vite": "^4.3.9",
+    "vite-inspector": "^0.0.12",
+    "vite-plugin-alias": "^0.0.9",
+    "vite-plugin-auto-env": "^0.0.2",
+    "vite-plugin-chai": "^0.0.2",
+    "vite-plugin-classify": "^0.0.1",
+    "vite-plugin-deploy-info": "^0.0.1",
+    "vite-plugin-package-configs": "^0.0.11",
+    "vite-plugin-pages": "^0.31.0",
+    "vitest": "^0.32.4",
+    "vue-tsc": "^1.8.4"
+  }
+}

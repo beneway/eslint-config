@@ -2,7 +2,7 @@
   "name": "eslint-plugin-beneway",
   "version": "0.1.0",
   "license": "MIT",
-  "homepage": "https://github.com/benewy/eslint-config",
+  "homepage": "https://github.com/beneway/eslint-config",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

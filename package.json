@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@beneway/eslint-config": "^0.0.0",
+    "@beneway/eslint-config": "workspace:*",
     "bumpp": "^9.1.1",
     "eslint": "^8.44.0",
     "eslint-plugin-beneway": "workspace:*",
