@@ -28,15 +28,29 @@ module.exports = {
     'pnpm-lock.yaml',
     'yarn.lock',
     '__snapshots__',
+    // ignore for in lint-staged
+    '*.css',
+    '*.png',
+    '*.ico',
+    '*.toml',
+    '*.patch',
+    '*.txt',
+    '*.crt',
+    '*.key',
+    'Dockerfile',
+    // force include
     '!.github',
     '!.vitepress',
     '!.vscode',
+    // force exclude
+    '.vitepress/cache',
   ],
   plugins: [
     'html',
     'unicorn',
-    'benewy',
+    'beneway',
     'no-only-tests',
+    'unused-imports',
   ],
   settings: {
     'import/resolver': {
@@ -45,7 +59,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.json', '*.json5'],
+      files: ['*.json', '*.json5', '*.jsonc'],
       parser: 'jsonc-eslint-parser',
       rules: {
         'jsonc/array-bracket-spacing': ['error', 'never'],
@@ -142,9 +156,10 @@ module.exports = {
       },
     },
     {
-      files: ['*.js'],
+      files: ['*.js', '*.cjs', '*.jsx'],
       rules: {
         '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-require-imports': 'off',
       },
     },
     {
@@ -176,13 +191,19 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/comma-dangle': 'off',
         '@typescript-eslint/consistent-type-imports': 'off',
+        '@typescript-eslint/no-namespace': 'off',
+        '@typescript-eslint/no-require-imports': 'off',
         'import/no-unresolved': 'off',
+        'unused-imports/no-unused-imports': 'off',
+        'unused-imports/no-unused-vars': 'off',
         'no-alert': 'off',
         'no-console': 'off',
         'no-restricted-imports': 'off',
         'no-undef': 'off',
         'no-unused-expressions': 'off',
         'no-unused-vars': 'off',
+        'beneway/no-cjs-exports': 'off',
+        'beneway/no-ts-export-equal': 'off',
       },
     },
   ],
@@ -193,13 +214,21 @@ module.exports = {
     'import/no-mutable-exports': 'error',
     'import/no-unresolved': 'off',
     'import/no-absolute-path': 'off',
+    'import/newline-after-import': ['error', { count: 1, considerComments: true }],
+    'import/no-self-import': 'error',
 
     // Common
     'semi': ['error', 'never'],
     'curly': ['error', 'multi-or-nest', 'consistent'],
     'quotes': ['error', 'single'],
     'quote-props': ['error', 'consistent-as-needed'],
-    'no-unused-vars': 'warn',
+
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+    ],
+
     'no-param-reassign': 'off',
     'array-bracket-spacing': ['error', 'never'],
     'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
@@ -212,7 +241,7 @@ module.exports = {
     'no-debugger': 'error',
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'no-cond-assign': ['error', 'always'],
-    'func-call-spacing': ['off', 'never'],
+    'func-call-spacing': 'off',
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
     'indent': ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
     'no-restricted-syntax': [
@@ -231,13 +260,26 @@ module.exports = {
         asyncArrow: 'always',
       },
     ],
+    'no-restricted-globals': [
+      'error',
+      { name: 'global', message: 'Use `globalThis` instead.' },
+      { name: 'self', message: 'Use `globalThis` instead.' },
+    ],
+    'no-restricted-properties': [
+      'error',
+      { property: '__proto__', message: 'Use `Object.getPrototypeOf` or `Object.setPrototypeOf` instead.' },
+      { property: '__defineGetter__', message: 'Use `Object.defineProperty` instead.' },
+      { property: '__defineSetter__', message: 'Use `Object.defineProperty` instead.' },
+      { property: '__lookupGetter__', message: 'Use `Object.getOwnPropertyDescriptor` instead.' },
+      { property: '__lookupSetter__', message: 'Use `Object.getOwnPropertyDescriptor` instead.' },
+    ],
 
     // es6
     'no-var': 'error',
     'prefer-const': [
       'error',
       {
-        destructuring: 'any',
+        destructuring: 'all',
         ignoreReadBeforeAssign: true,
       },
     ],
@@ -279,7 +321,7 @@ module.exports = {
     'array-callback-return': 'error',
     'block-scoped-var': 'error',
     'consistent-return': 'off',
-    'complexity': ['off', 11],
+    'complexity': 'off',
     'eqeqeq': ['error', 'smart'],
     'no-alert': 'warn',
     'no-case-declarations': 'error',
@@ -288,11 +330,17 @@ module.exports = {
     'no-with': 'error',
     'no-void': 'error',
     'no-useless-escape': 'off',
+    'no-invalid-this': 'error',
     'vars-on-top': 'error',
     'require-await': 'off',
     'no-return-assign': 'off',
     'operator-linebreak': ['error', 'before'],
     'max-statements-per-line': ['error', { max: 1 }],
+
+    // node
+    'n/prefer-global/process': ['error', 'never'],
+    'n/prefer-global/buffer': ['error', 'never'],
+    'n/no-callback-literal': 'off',
 
     // unicorns
     // Pass error message when throwing errors
@@ -317,13 +365,18 @@ module.exports = {
     'unicorn/prefer-type-error': 'error',
     // Use new when throwing error
     'unicorn/throw-new-error': 'error',
+    // Prefer using the node: protocol
+    'unicorn/prefer-node-protocol': 'error',
+    // Prefer using number properties like `Number.isNaN` rather than `isNaN`
+    'unicorn/prefer-number-properties': 'error',
+    // Ban `new Array` as `Array` constructor's params are ambiguous
+    'unicorn/no-new-array': 'error',
 
     'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
     'eslint-comments/disable-enable-pair': 'off',
     'import/no-named-as-default-member': 'off',
     'import/no-named-as-default': 'off',
     'import/namespace': 'off',
-    'n/no-callback-literal': 'off',
 
     'sort-imports': [
       'error',
@@ -340,9 +393,10 @@ module.exports = {
     'yml/quotes': ['error', { prefer: 'single', avoidEscape: false }],
     'yml/no-empty-document': 'off',
 
-    // benewy
-    'benewy/if-newline': 'error',
-    'benewy/import-dedupe': 'error',
-    // 'benewy/prefer-inline-type-import': 'error',
+    // beneway
+    'beneway/if-newline': 'error',
+    'beneway/import-dedupe': 'error',
+    'beneway/top-level-function': 'error',
+    // 'antfu/prefer-inline-type-import': 'error',
   },
 }

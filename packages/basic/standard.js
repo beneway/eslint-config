@@ -9,20 +9,24 @@ module.exports = {
     },
     sourceType: 'module',
   },
+
   env: {
     es2021: true,
     node: true,
   },
+
   plugins: [
     'import',
     'n',
     'promise',
   ],
+
   globals: {
     document: 'readonly',
     navigator: 'readonly',
     window: 'readonly',
   },
+
   rules: {
     'no-var': 'warn',
     'object-shorthand': ['warn', 'properties'],

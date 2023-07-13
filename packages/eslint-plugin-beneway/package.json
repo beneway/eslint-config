@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-benewy",
+  "name": "eslint-plugin-beneway",
   "version": "0.0.10",
   "license": "MIT",
   "homepage": "https://github.com/benewy/eslint-config",
@@ -16,11 +16,11 @@
     "prepublishOnly": "pnpm run build"
   },
   "devDependencies": {
-    "@types/node": "^18.11.18",
-    "unbuild": "^1.0.2",
-    "vitest": "^0.26.3"
+    "@types/node": "^20.4.2",
+    "unbuild": "^1.2.1",
+    "vitest": "^0.33.0"
   },
   "dependencies": {
-    "@typescript-eslint/utils": "^5.48.0"
+    "@typescript-eslint/utils": "^5.61.0"
   }
 }

@@ -1,6 +1,6 @@
-const fs = require('fs')
-const { join } = require('path')
-const basic = require('@benewy/eslint-config-basic')
+const fs = require('node:fs')
+const { join } = require('node:path')
+const basic = require('@antfu/eslint-config-basic')
 
 const tsconfig = process.env.ESLINT_TSCONFIG || 'tsconfig.eslint.json'
 
@@ -71,7 +71,7 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports', disallowTypeAnnotations: false }],
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/prefer-ts-expect-error': 'error',
-
+    '@typescript-eslint/no-require-imports': 'error',
     // Override JS
     'no-useless-constructor': 'off',
     'indent': 'off',
@@ -113,8 +113,8 @@ module.exports = {
       ],
       offsetTernaryExpressions: true,
     }],
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-invalid-this': 'off',
+    '@typescript-eslint/no-invalid-this': 'error',
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': 'error',
     'no-use-before-define': 'off',
@@ -157,6 +157,9 @@ module.exports = {
 
     // benewy
     'benewy/generic-spacing': 'error',
+    'benewy/no-cjs-exports': 'error',
+    'benewy/no-ts-export-equal': 'error',
+    'benewy/no-const-enum': 'error',
 
     // off
     '@typescript-eslint/consistent-indexed-object-style': 'off',
@@ -170,8 +173,8 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/ban-types': 'off',
-    '@typescript-eslint/no-namespace': 'off',
     '@typescript-eslint/triple-slash-reference': 'off',
+    // handled by unused-imports/no-unused-imports
+    '@typescript-eslint/no-unused-vars': 'off',
   },
 }

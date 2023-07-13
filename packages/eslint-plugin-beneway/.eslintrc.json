@@ -1,0 +1,6 @@
+{
+  "extends": "@beneway",
+  "plugins": [
+    "beneway"
+  ]
+}

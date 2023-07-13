@@ -1,6 +1,6 @@
-# @benewy/eslint-config
+# @beneway/eslint-config
 
-[![npm](https://img.shields.io/npm/v/@benewy/eslint-config?color=a1b858&label=)](https://npmjs.com/package/@benewy/eslint-config)
+[![npm](https://img.shields.io/npm/v/@beneway/eslint-config?color=a1b858&label=)](https://npmjs.com/package/@beneway/eslint-config)
 
 - 单引号，没有双引号
 - 自动修复格式（在没有 Prettier 的情况下独立使用）
@@ -15,14 +15,14 @@
 ### 安装
 
 ```bash
-pnpm add -D eslint @benewy/eslint-config
+pnpm add -D eslint @beneway/eslint-config
 ```
 
 ### 配置 `.eslintrc`
 
 ```json
 {
-  "extends": "@benewy"
+  "extends": "@beneway"
 }
 ```
 
@@ -64,7 +64,7 @@ pnpm add -D eslint @benewy/eslint-config
 process.env.ESLINT_TSCONFIG = 'tsconfig.json'
 
 module.exports = {
-  extends: '@benewy'
+  extends: '@beneway'
 }
 ```
 

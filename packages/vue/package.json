@@ -1,5 +1,5 @@
 {
-  "name": "@benewy/eslint-config-vue",
+  "name": "@beneway/eslint-config-vue",
   "version": "0.0.10",
   "license": "MIT",
   "homepage": "https://github.com/benewy/eslint-config",
@@ -14,12 +14,12 @@
     "eslint": ">=7.4.0"
   },
   "dependencies": {
-    "@benewy/eslint-config-basic": "workspace:*",
-    "@benewy/eslint-config-ts": "workspace:*",
-    "eslint-plugin-vue": "^9.8.0",
-    "local-pkg": "^0.4.2"
+    "@beneway/eslint-config-basic": "workspace:*",
+    "@beneway/eslint-config-ts": "workspace:*",
+    "eslint-plugin-vue": "^9.15.1",
+    "local-pkg": "^0.4.3"
   },
   "devDependencies": {
-    "eslint": "^8.31.0"
+    "eslint": "^8.44.0"
   }
 }
