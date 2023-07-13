@@ -397,6 +397,6 @@ module.exports = {
     'beneway/if-newline': 'error',
     'beneway/import-dedupe': 'error',
     'beneway/top-level-function': 'error',
-    // 'antfu/prefer-inline-type-import': 'error',
+    // 'beneway/prefer-inline-type-import': 'error',
   },
 }
