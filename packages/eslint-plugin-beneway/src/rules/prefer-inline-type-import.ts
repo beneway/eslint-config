@@ -1,7 +1,7 @@
 // Ported from https://github.com/gajus/eslint-plugin-canonical/blob/master/src/rules/preferInlineTypeImport.js
 // by Gajus Kuizinas https://github.com/gajus
 import type { TSESTree } from '@typescript-eslint/utils'
-import type { RuleFixer, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { RuleFixer, SourceCode } from '@typescript-eslint/utils/ts-eslint'
 import { createEslintRule } from '../utils'
 
 export const RULE_NAME = 'prefer-inline-type-import'
@@ -14,7 +14,6 @@ export default createEslintRule<Options, MessageIds>({
     type: 'suggestion',
     docs: {
       description: 'Inline type import',
-      recommended: 'error',
     },
     fixable: 'code',
     schema: [],
@@ -30,7 +29,7 @@ export default createEslintRule<Options, MessageIds>({
         // ignore bare type imports
         if (node.specifiers.length === 1 && ['ImportNamespaceSpecifier', 'ImportDefaultSpecifier'].includes(node.specifiers[0].type))
           return
-        if (node.importKind === 'type') {
+        if (node.importKind === 'type' && node.specifiers.length > 0) {
           context.report({
             *fix(fixer) {
               yield * removeTypeSpecifier(fixer, sourceCode, node)
