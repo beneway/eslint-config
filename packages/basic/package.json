@@ -33,6 +33,7 @@
     "yaml-eslint-parser": "^1.2.2"
   },
   "devDependencies": {
-    "eslint": "^8.46.0"
+    "eslint": "^8.46.0",
+    "eslint-plugin-jsdoc": "^46.6.0"
   }
 }
