@@ -72,6 +72,10 @@ module.exports = {
 
 了解更多上下文 - [为什么我不推荐使用 Prettier](https://antfu.me/posts/why-not-prettier)。
 
+## Credits
+
+- [@antfu/eslint-config](https://github.com/antfu/eslint-config)
+
 ## License
 
 [MIT](./LICENSE) License &copy; 2023-PRESENT [杭州融惠数据科技有限公司](https://github.com/beneway)
