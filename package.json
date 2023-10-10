@@ -11,11 +11,11 @@
   "license": "MIT",
   "devDependencies": {
     "@beneway/eslint-config": "workspace:*",
-    "@stylistic/eslint-plugin-migrate": "^0.0.4",
+    "@stylistic/eslint-plugin-migrate": "^0.0.8",
     "bumpp": "^9.2.0",
-    "eslint": "^8.49.0",
+    "eslint": "^8.51.0",
     "eslint-plugin-beneway": "workspace:*",
-    "rimraf": "^5.0.1",
+    "rimraf": "^5.0.5",
     "typescript": "^5.2.2"
   }
 }
