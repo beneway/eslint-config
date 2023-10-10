@@ -11,6 +11,7 @@
   "license": "MIT",
   "devDependencies": {
     "@beneway/eslint-config": "workspace:*",
+    "@stylistic/eslint-plugin-migrate": "^0.0.4",
     "bumpp": "^9.2.0",
     "eslint": "^8.49.0",
     "eslint-plugin-beneway": "workspace:*",

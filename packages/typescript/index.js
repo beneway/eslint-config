@@ -1,5 +1,6 @@
 const fs = require('node:fs')
 const { join } = require('node:path')
+const process = require('node:process')
 const basic = require('@beneway/eslint-config-basic')
 
 const tsconfig = process.env.ESLINT_TSCONFIG || 'tsconfig.eslint.json'
@@ -10,13 +11,140 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:@typescript-eslint/recommended',
   ],
+  plugins: [
+    '@stylistic/ts',
+  ],
   settings: {
     'import/resolver': {
       node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
     },
   },
-  overrides: basic.overrides.concat(
-    !fs.existsSync(join(process.cwd(), tsconfig))
+  overrides: [
+    ...basic.overrides,
+    // TSConfig Sorting
+    {
+      files: ['**/tsconfig.json', '**/tsconfig.*.json'],
+      parser: 'jsonc-eslint-parser',
+      rules: {
+        'jsonc/sort-keys': [
+          'error',
+          {
+            pathPattern: '^$',
+            order: [
+              'extends',
+              'compilerOptions',
+              'references',
+              'files',
+              'include',
+              'exclude',
+            ],
+          },
+          {
+            pathPattern: '^compilerOptions$',
+            order: [
+              /* Projects */
+              'incremental',
+              'composite',
+              'tsBuildInfoFile',
+              'disableSourceOfProjectReferenceRedirect',
+              'disableSolutionSearching',
+              'disableReferencedProjectLoad',
+              /* Language and Environment */
+              'target',
+              'lib',
+              'jsx',
+              'experimentalDecorators',
+              'emitDecoratorMetadata',
+              'jsxFactory',
+              'jsxFragmentFactory',
+              'jsxImportSource',
+              'reactNamespace',
+              'noLib',
+              'useDefineForClassFields',
+              'moduleDetection',
+              /* Modules */
+              'module',
+              'rootDir',
+              'moduleResolution',
+              'baseUrl',
+              'paths',
+              'rootDirs',
+              'typeRoots',
+              'types',
+              'allowUmdGlobalAccess',
+              'moduleSuffixes',
+              'allowImportingTsExtensions',
+              'resolvePackageJsonExports',
+              'resolvePackageJsonImports',
+              'customConditions',
+              'resolveJsonModule',
+              'allowArbitraryExtensions',
+              'noResolve',
+              /* JavaScript Support */
+              'allowJs',
+              'checkJs',
+              'maxNodeModuleJsDepth',
+              /* Emit */
+              'declaration',
+              'declarationMap',
+              'emitDeclarationOnly',
+              'sourceMap',
+              'inlineSourceMap',
+              'outFile',
+              'outDir',
+              'removeComments',
+              'noEmit',
+              'importHelpers',
+              'importsNotUsedAsValues',
+              'downlevelIteration',
+              'sourceRoot',
+              'mapRoot',
+              'inlineSources',
+              'emitBOM',
+              'newLine',
+              'stripInternal',
+              'noEmitHelpers',
+              'noEmitOnError',
+              'preserveConstEnums',
+              'declarationDir',
+              'preserveValueImports',
+              /* Interop Constraints */
+              'isolatedModules',
+              'verbatimModuleSyntax',
+              'allowSyntheticDefaultImports',
+              'esModuleInterop',
+              'preserveSymlinks',
+              'forceConsistentCasingInFileNames',
+              /* Type Checking */
+              'strict',
+              'strictBindCallApply',
+              'strictFunctionTypes',
+              'strictNullChecks',
+              'strictPropertyInitialization',
+              'allowUnreachableCode',
+              'allowUnusedLabels',
+              'alwaysStrict',
+              'exactOptionalPropertyTypes',
+              'noFallthroughCasesInSwitch',
+              'noImplicitAny',
+              'noImplicitOverride',
+              'noImplicitReturns',
+              'noImplicitThis',
+              'noPropertyAccessFromIndexSignature',
+              'noUncheckedIndexedAccess',
+              'noUnusedLocals',
+              'noUnusedParameters',
+              'useUnknownInCatchVariables',
+              /* Completeness */
+              'skipDefaultLibCheck',
+              'skipLibCheck',
+            ],
+          },
+        ],
+      },
+    },
+    // TS Aware Rules
+    ...(!fs.existsSync(join(process.cwd(), tsconfig))
       ? []
       : [{
           parserOptions: {
@@ -59,23 +187,70 @@ module.exports = {
             '@typescript-eslint/unbound-method': 'off',
             'jest/unbound-method': 'error',
           },
-        }],
-  ),
+        }]
+    ),
+  ],
   rules: {
     'import/named': 'off',
 
     // TS
     '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
-    '@typescript-eslint/member-delimiter-style': ['error', { multiline: { delimiter: 'none' } }],
-    '@typescript-eslint/type-annotation-spacing': ['error', {}],
     '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports', disallowTypeAnnotations: false }],
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/prefer-ts-expect-error': 'error',
     '@typescript-eslint/no-require-imports': 'error',
+
+    // TS Stylistic
+    '@stylistic/ts/member-delimiter-style': ['error', { multiline: { delimiter: 'none' } }],
+    '@stylistic/ts/type-annotation-spacing': ['error', {}],
+
     // Override JS
     'no-useless-constructor': 'off',
-    'indent': 'off',
-    '@typescript-eslint/indent': ['error', 2, {
+    'no-invalid-this': 'off',
+    '@typescript-eslint/no-invalid-this': 'error',
+    'no-redeclare': 'off',
+    '@typescript-eslint/no-redeclare': 'error',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
+    'no-dupe-class-members': 'off',
+    '@typescript-eslint/no-dupe-class-members': 'error',
+    'no-loss-of-precision': 'off',
+    '@typescript-eslint/no-loss-of-precision': 'error',
+    'semi': 'off',
+    '@typescript-eslint/semi': ['error', 'never'],
+    'quotes': 'off',
+    '@typescript-eslint/quotes': ['error', 'single'],
+    'no-extra-parens': 'off',
+    '@typescript-eslint/no-extra-parens': ['error', 'functions'],
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
+
+    // Stylistic JS/TS
+    '@stylistic/js/space-before-blocks': 'off',
+    '@stylistic/ts/space-before-blocks': ['error', 'always'],
+    '@stylistic/js/space-before-function-paren': 'off',
+    '@stylistic/ts/space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always',
+      },
+    ],
+    '@stylistic/js/brace-style': 'off',
+    '@stylistic/ts/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
+    '@stylistic/js/object-curly-spacing': 'off',
+    '@stylistic/ts/object-curly-spacing': ['error', 'always'],
+    '@stylistic/js/space-infix-ops': 'off',
+    '@stylistic/ts/space-infix-ops': 'error',
+    '@stylistic/js/keyword-spacing': 'off',
+    '@stylistic/ts/keyword-spacing': ['error', { before: true, after: true }],
+    '@stylistic/js/comma-spacing': 'off',
+    '@stylistic/ts/comma-spacing': ['error', { before: false, after: true }],
+    '@stylistic/js/lines-between-class-members': 'off',
+    '@stylistic/ts/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
+    '@stylistic/js/indent': 'off',
+    '@stylistic/ts/indent': ['error', 2, {
       SwitchCase: 1,
       VariableDeclarator: 1,
       outerIIFEBody: 1,
@@ -113,53 +288,13 @@ module.exports = {
       ],
       offsetTernaryExpressions: true,
     }],
-    'no-invalid-this': 'off',
-    '@typescript-eslint/no-invalid-this': 'error',
-    'no-redeclare': 'off',
-    '@typescript-eslint/no-redeclare': 'error',
-    'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
-    'brace-style': 'off',
-    '@typescript-eslint/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
-    'comma-dangle': 'off',
-    '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
-    'object-curly-spacing': 'off',
-    '@typescript-eslint/object-curly-spacing': ['error', 'always'],
-    'semi': 'off',
-    '@typescript-eslint/semi': ['error', 'never'],
-    'quotes': 'off',
-    '@typescript-eslint/quotes': ['error', 'single'],
-    'space-before-blocks': 'off',
-    '@typescript-eslint/space-before-blocks': ['error', 'always'],
-    'space-before-function-paren': 'off',
-    '@typescript-eslint/space-before-function-paren': [
-      'error',
-      {
-        anonymous: 'always',
-        named: 'never',
-        asyncArrow: 'always',
-      },
-    ],
-    'space-infix-ops': 'off',
-    '@typescript-eslint/space-infix-ops': 'error',
-    'keyword-spacing': 'off',
-    '@typescript-eslint/keyword-spacing': ['error', { before: true, after: true }],
-    'comma-spacing': 'off',
-    '@typescript-eslint/comma-spacing': ['error', { before: false, after: true }],
-    'no-extra-parens': 'off',
-    '@typescript-eslint/no-extra-parens': ['error', 'functions'],
-    'no-dupe-class-members': 'off',
-    '@typescript-eslint/no-dupe-class-members': 'error',
-    'no-loss-of-precision': 'off',
-    '@typescript-eslint/no-loss-of-precision': 'error',
-    'lines-between-class-members': 'off',
-    '@typescript-eslint/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
 
     // beneway
     'beneway/generic-spacing': 'error',
     'beneway/no-cjs-exports': 'error',
     'beneway/no-ts-export-equal': 'error',
     'beneway/no-const-enum': 'error',
+    'beneway/named-tuple-spacing': 'error',
 
     // off
     '@typescript-eslint/consistent-indexed-object-style': 'off',
