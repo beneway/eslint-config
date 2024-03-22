@@ -42,7 +42,7 @@ module.exports = {
     'vue/no-setup-props-reactivity-loss': 'off',
 
     'vue/block-order': ['error', {
-      order: ['script', 'template', 'style'],
+      order: ['template', 'script', 'style'],
     }],
     'vue/block-tag-newline': ['error', {
       singleline: 'always',

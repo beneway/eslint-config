@@ -1,13 +1,3 @@
-<script setup lang="ts">
-const name = ref('')
-
-const router = useRouter()
-function go() {
-  if (name)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
-}
-</script>
-
 <template>
   <div>
     <div i-carbon-earth-southeast-asia text-4xl inline-block />
@@ -40,3 +30,13 @@ function go() {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const name = ref('')
+
+const router = useRouter()
+function go() {
+  if (name)
+    router.push(`/hi/${encodeURIComponent(name.value)}`)
+}
+</script>

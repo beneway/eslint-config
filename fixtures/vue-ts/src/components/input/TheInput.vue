@@ -1,10 +1,3 @@
-<script setup lang="ts" name="TheInput">
-import type { Input } from '~components/input/prop'
-
-const { modelValue } = defineProps<Input>()
-const emit = defineEmits(['update:modelValue'])
-</script>
-
 <template>
   <input
     id="input"
@@ -20,3 +13,10 @@ const emit = defineEmits(['update:modelValue'])
     @input="emit('update:modelValue', $event.target.value)"
   >
 </template>
+
+<script setup lang="ts" name="TheInput">
+import type { Input } from '~components/input/prop'
+
+const { modelValue } = defineProps<Input>()
+const emit = defineEmits(['update:modelValue'])
+</script>

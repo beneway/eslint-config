@@ -2,13 +2,14 @@
   "name": "@beneway/eslint-config-monorepo",
   "version": "0.1.7",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "pnpm -C packages/eslint-plugin-beneway run test",
     "prepare": "pnpm -r run stub",
     "release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public"
   },
-  "license": "MIT",
   "devDependencies": {
     "@beneway/eslint-config": "workspace:*",
     "@stylistic/eslint-plugin-migrate": "^0.0.8",

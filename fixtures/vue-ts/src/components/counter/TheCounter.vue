@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import type { Counter } from '~components/counter/prop'
-
-const props = defineProps<Counter>()
-
-const { count, inc, dec } = useCounter(props.initial)
-</script>
-
 <template>
   <div inline-flex m="y-3">
     <button class="dec" btn p-2 rounded-full @click="dec()">
@@ -19,3 +11,11 @@ const { count, inc, dec } = useCounter(props.initial)
     </button>
   </div>
 </template>
+
+<script setup lang="ts">
+import type { Counter } from '~components/counter/prop'
+
+const props = defineProps<Counter>()
+
+const { count, inc, dec } = useCounter(props.initial)
+</script>

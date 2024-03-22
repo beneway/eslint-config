@@ -1,7 +1,3 @@
-<script setup lang="ts" name="TheFooter">
-const router = useRouter()
-</script>
-
 <template>
   <nav text-xl mt-6 inline-flex gap-2>
     <button icon-btn @click="router.push('/')">
@@ -21,3 +17,7 @@ const router = useRouter()
     </button>
   </nav>
 </template>
+
+<script setup lang="ts" name="TheFooter">
+const router = useRouter()
+</script>

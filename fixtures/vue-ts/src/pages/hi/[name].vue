@@ -1,9 +1,3 @@
-<script setup lang="ts">
-defineProps<{ name: string }>()
-
-const router = useRouter()
-</script>
-
 <template>
   <div>
     <div i-carbon-earth-southeast-asia-filled text-4xl inline-block />
@@ -26,3 +20,9 @@ const router = useRouter()
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+defineProps<{ name: string }>()
+
+const router = useRouter()
+</script>
