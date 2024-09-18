@@ -1,6 +1,6 @@
 {
   "name": "@beneway/eslint-config-monorepo",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "private": true,
   "license": "MIT",
   "scripts": {
